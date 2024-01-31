@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 
+/**
+ * @deprecated Used in the first try to program with React.js
+ */
 export function GetCity() {
     
     var [city, setCity] = useState("");

@@ -2,6 +2,9 @@ import '../stylesheets/Home.css'
 import { GetCity } from '../handlers/GetCity';
 import { GetWeather } from '../handlers/GetWeather';
 
+/**
+ * @deprecated Used in the first try to program with React.js
+ */
 function Home(){
 
     var header = <>

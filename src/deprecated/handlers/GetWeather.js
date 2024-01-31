@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 
+/**
+ * @deprecated Used in the first try to program with React.js
+ */
 export function GetWeather(city){	
     const [current, setCurrent] = useState([])//current.json
     const [forecast, setForecast] = useState([]); //forecast.json

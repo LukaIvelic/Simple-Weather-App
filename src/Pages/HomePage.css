@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    height: 100%;
+}
+
+#root{
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    height: 100%;
+
+    background: white;
+}
+
+header{
+    grid-row: 1;
+    grid-column: 1/21;
+    height: 3rem;
+    width: 100%;
+
+    background-color: whitesmoke;
+    border-bottom: 1px solid #DDDDDD;
+
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+
+    position: fixed;
+}
+
+header h3{
+    grid-column: 1/7;
+    align-self: center;
+    padding-left: 1rem;
+
+    font-weight: 300;
+}
+
+#region-display{
+    grid-row: 3;
+    grid-column: 3/10;
+
+    align-self: center;
+
+    /* background-color: red; */
+
+    color: black;
+}
+
+#city-name{
+    font-size: 2rem;
+}
+
+#country-name{
+    font-size: 1.5rem;
+}
