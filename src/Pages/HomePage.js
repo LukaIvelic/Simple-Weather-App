@@ -9,7 +9,7 @@ export default function HomePageLayout() {
         <header>
             <h3>Weather App</h3>
             <div id='search-div'>
-                <input type='text' placeholder='Zagreb' id='city-input' onKeyUp={(e)=>{if(e.key === "Enter") updateWeather(e.target.value)}}></input>
+                <input type='text' placeholder='Zagreb' id='city-input' onKeyUp={(e)=>{if(e.key === "Enter") {updateWeather(e.target.value); e.target.value = ""}}}></input>
             </div>
         </header>
     </>;
