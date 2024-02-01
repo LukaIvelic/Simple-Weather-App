@@ -30,6 +30,8 @@ header{
     grid-template-columns: repeat(20, 1fr);
 
     position: fixed;
+
+    z-index: 1;
 }
 
 header h3{
@@ -59,7 +61,7 @@ header h3{
 
 #region-display{
     grid-row: 3;
-    grid-column: 3/10;
+    grid-column: 3/15;
 
     align-self: center;
     color: black;
@@ -180,5 +182,5 @@ header h3{
 
 #weather-sum{
     grid-row: 5;
-    grid-column: 3/7;
+    grid-column: 3/10;
 }

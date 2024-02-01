@@ -2,6 +2,10 @@ export async function updateWeather(inputCity) {
     if (inputCity === "-1") {
         var res = await fetch('https://api.geoapify.com/v1/ipinfo?&apiKey=0e920c1543974f678b31ce48b50006b4');
         var data = await res.json();
+        if(data["city"] === undefined) {
+            alert("No city found");
+            return;
+        }
         await getWeather(data["city"].name);
     } else {
         await getWeather(inputCity);
@@ -31,6 +35,11 @@ async function getWeather(city) {
     current = dataCurr;
     forecast = dataFore;
     future = dataFutr;
+
+    if(current["location"] === undefined){
+        alert("No city found");
+        return;
+    }
 
     var cityName = current["location"].name;
     var country = current["location"].country;
