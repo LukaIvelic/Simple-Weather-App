@@ -2,13 +2,11 @@ export async function updateWeather(inputCity) {
     if (inputCity === "-1") {
         var res = await fetch('https://api.geoapify.com/v1/ipinfo?&apiKey=0e920c1543974f678b31ce48b50006b4');
         var data = await res.json();
-        alert(data["city"]?.name);
+        await getWeather(data["city"].name);
     } else {
-        var result = await getWeather(inputCity);
-        console.log(result);
+        await getWeather(inputCity);
     }
-    // return city;
-}
+}updateWeather("-1")
 
 async function getWeather(city) {
     var current; //current.json
@@ -53,6 +51,4 @@ async function getWeather(city) {
     document.getElementById('wind-speed-heading').innerHTML = `${windSpeed} km/h`;
     document.getElementById('humidity-heading').innerHTML = `${humidity}%`;
     document.getElementById('uv-index-heading').innerHTML = `${uvIndex}`;
-
-    return [current, forecast, future];
 }
