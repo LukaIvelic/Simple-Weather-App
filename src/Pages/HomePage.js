@@ -1,15 +1,25 @@
 //#region Manual imports
 import './HomePage.css'
-import { updateWeather } from '../FetchReq/FetchWeather';
+import { fetchWeather } from '../FetchReq/FetchWeather';
+import { fetchLocalWeather } from '../FetchReq/FetchLocalWeather';
 //#endregion
 
+fetchLocalWeather();
 export default function HomePageLayout() {
 
     var header = <>
         <header>
             <h3>Weather App</h3>
             <div id='search-div'>
-                <input type='text' placeholder='Zagreb' id='city-input' onKeyUp={(e)=>{if(e.key === "Enter") {updateWeather(e.target.value); e.target.value = ""}}}></input>
+                <input type='text' placeholder='Zagreb' id='city-input' onKeyUp={
+                    (e) => {
+                        if(e.key === 'Enter'){
+                            fetchWeather(e.target.value);
+                            e.currentTarget.value = "";
+                        }
+                    }
+                }>
+                </input>
             </div>
         </header>
     </>;
@@ -32,12 +42,12 @@ export default function HomePageLayout() {
                     </g>
                 </svg>
                 &nbsp;
-                <span id='city-name'>Zagreb</span>, <span id='country-name'>Croatia</span></h1>
+                <span id='city-name'></span>, <span id='country-name'></span></h1>
         </div>
     </>;
 
     var weatherInfoSum = <>
-        <h2 id='weather-sum'>Currently Sunny, 32&deg;</h2>
+        <h2 id='weather-sum'></h2>
     </>;
 
     var weatherInfoToday = <>
@@ -45,27 +55,27 @@ export default function HomePageLayout() {
         <div id='weather-today-tab'>
             <div id='feels-like' className='info-tab'>
                 <label htmlFor='feels-like' className='weather-label'>Feels like:</label>
-                <h3 id='feels-like-heading'>35&deg;</h3>
+                <h3 id='feels-like-heading'></h3>
             </div>
 
             <div id='gust-speed' className='info-tab'>
                 <label htmlFor='gust-speed' className='weather-label'>Gust speed:</label>
-                <h3 id='gust-speed-heading'>12 km/h</h3>
+                <h3 id='gust-speed-heading'></h3>
             </div>
 
             <div id='wind-speed' className='info-tab'>
                 <label htmlFor='wind-speed' className='weather-label'>Wind speed:</label>
-                <h3 id='wind-speed-heading'>1 km/h</h3>
+                <h3 id='wind-speed-heading'></h3>
             </div>
 
             <div id='humidity' className='info-tab'>
                 <label htmlFor='humidity' className='weather-label'>Humidity:</label>
-                <h3 id='humidity-heading'>55%</h3>
+                <h3 id='humidity-heading'></h3>
             </div>
 
             <div id='uv-index' className='info-tab'>
                 <label htmlFor='uv-index' className='weather-label'>UV index:</label>
-                <h3 id='uv-index-heading'>11</h3>
+                <h3 id='uv-index-heading'></h3>
             </div>
         </div>
     </>;
