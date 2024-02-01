@@ -1,5 +1,6 @@
 //#region Manual imports
 import './HomePage.css'
+import { updateWeather } from '../FetchReq/FetchWeather';
 //#endregion
 
 export default function HomePageLayout() {
@@ -7,12 +8,15 @@ export default function HomePageLayout() {
     var header = <>
         <header>
             <h3>Weather App</h3>
+            <div id='search-div'>
+                <input type='text' placeholder='Zagreb' id='city-input' onKeyUp={(e)=>{if(e.key === "Enter") updateWeather(e.target.value)}}></input>
+            </div>
         </header>
     </>;
 
     var cityName = <>
         <div id='region-display'>
-            <h1 id='city-name'>
+            <h1 id='city-name-location'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" id="location">
                     <g fill="none" fill-rule="evenodd" stroke="black" stroke-linecap="round" 
                        stroke-linejoin="round" stroke-width="1.5" transform="translate(3.5 2)">
@@ -28,7 +32,7 @@ export default function HomePageLayout() {
                     </g>
                 </svg>
                 &nbsp;
-                Zagreb, <span id='country-name'>Croatia</span></h1>
+                <span id='city-name'>Zagreb</span>, <span id='country-name'>Croatia</span></h1>
         </div>
     </>;
 
@@ -36,57 +40,39 @@ export default function HomePageLayout() {
         <h2 id='weather-sum'>Currently Sunny, 32&deg;</h2>
     </>;
 
-    /*
-        var location = {
-            cityName: weather[1].location?.name,
-            region: weather[1].location?.country
-        };
-
-        var currentWeatherInfo = {
-            feelsLikeC: weather[1].current?.feelslike_c,
-            gustKph: weather[1].current?.gust_kph,
-            windKph: weather[1].current?.wind_kph,
-            humidity: weather[1].current?.humidity,
-            isDay: weather[1].current?.is_day,
-            tempC: weather[1].current?.temp_c,
-            uvIndex: weather[1].current?.uv,
-            condition: weather[1].current?.condition.text,
-        };
-    */
-
     var weatherInfoToday = <>
         <label htmlFor='weatherInfoToday' id='weather-today'>Today's Weather</label>
         <div id='weather-today-tab'>
             <div id='feels-like' className='info-tab'>
                 <label htmlFor='feels-like' className='weather-label'>Feels like:</label>
-                <h3>35&deg;</h3>
+                <h3 id='feels-like-heading'>35&deg;</h3>
             </div>
 
             <div id='gust-speed' className='info-tab'>
                 <label htmlFor='gust-speed' className='weather-label'>Gust speed:</label>
-                <h3>12 km/h</h3>
+                <h3 id='gust-speed-heading'>12 km/h</h3>
             </div>
 
             <div id='wind-speed' className='info-tab'>
                 <label htmlFor='wind-speed' className='weather-label'>Wind speed:</label>
-                <h3>1 km/h</h3>
+                <h3 id='wind-speed-heading'>1 km/h</h3>
             </div>
 
             <div id='humidity' className='info-tab'>
                 <label htmlFor='humidity' className='weather-label'>Humidity:</label>
-                <h3>55%</h3>
+                <h3 id='humidity-heading'>55%</h3>
             </div>
 
             <div id='uv-index' className='info-tab'>
                 <label htmlFor='uv-index' className='weather-label'>UV index:</label>
-                <h3>11</h3>
+                <h3 id='uv-index-heading'>11</h3>
             </div>
         </div>
     </>;
 
     var qrCode = <>
         <label htmlFor='qrCode' id='qr-label'>API used: </label>
-        <img src={require('../Media/qr.png')} id='qr-code' alt='QR Code'></img>
+        <img src={require('../Media/weatherApi.png')} id='qr-code' alt='QR Code'></img>
     </>;
 
     return (<>
